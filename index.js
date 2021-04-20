@@ -10,7 +10,7 @@ app.use(cors());
 
 const port = process.env.PORT || 5000
 
-const uri = "mongodb+srv://carService:carService79@cluster0.5gken.mongodb.net/myFirstDatabase?retryWrites=true&w=majority";
+const uri = "mongodb+srv://carService:carService79@cluster0.5gken.mongodb.net/carService?retryWrites=true&w=majority";
 const client = new MongoClient(uri, { useNewUrlParser: true, useUnifiedTopology: true });
 client.connect(err => {
   const collection = client.db("carService").collection("Appointment");
