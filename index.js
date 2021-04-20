@@ -3,6 +3,7 @@ const bodyParser = require('body-parser')
 const cors = require('cors')
 const MongoClient = require('mongodb').MongoClient;
 const objectId = require("mongodb").ObjectId
+require('dotenv').config()
 
 const app = express()
 app.use(bodyParser.json())
@@ -10,7 +11,7 @@ app.use(cors());
 
 const port = process.env.PORT || 5000
 
-const uri = "mongodb+srv://carService:carService79@cluster0.5gken.mongodb.net/carService?retryWrites=true&w=majority";
+const uri = `mongodb+srv://${process.env.DB_USER}:${process.env.DB_PASS}@cluster0.5gken.mongodb.net/carService?retryWrites=true&w=majority`;
 const client = new MongoClient(uri, { useNewUrlParser: true, useUnifiedTopology: true });
 client.connect(err => {
   const collection = client.db("carService").collection("Appointment");
